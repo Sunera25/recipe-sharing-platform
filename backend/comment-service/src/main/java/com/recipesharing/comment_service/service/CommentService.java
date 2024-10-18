@@ -3,6 +3,7 @@ package com.recipesharing.comment_service.service;
 import com.recipesharing.comment_service.model.Comment;
 import com.recipesharing.comment_service.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -26,9 +27,9 @@ public class CommentService {
             List<Comment> comments = commentRepository.findByRecipeId(recipeId); //get comments based on recipe id
             if(comments.isEmpty()){
                 LOGGER.warning("No comments found for recipe id " + recipeId);
-                return ResponseEntity.noContent().build();
+                return ResponseEntity.notFound().build();
             }
-            return ResponseEntity.ok(comments);
+            return ResponseEntity.status(HttpStatus.CREATED).body(comments);
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE,"Error Retrieving coments for RecipeId"+ recipeId,e);
             return ResponseEntity.status(500).build();
