@@ -1,8 +1,9 @@
 package com.recipesharing.ingredient_service.controller;
 
-import com.recipesharing.ingredient_service.exeption.SavedIngredientServiceException;
 import com.recipesharing.ingredient_service.model.SavedIngredient;
 import com.recipesharing.ingredient_service.service.SavedIngredientService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,25 +24,14 @@ public class SavedIngredientController {
 
     @GetMapping("/{userId}")
     public ResponseEntity<List<SavedIngredient>> getSavedIngredientsByUserId(@PathVariable Long userId) {
-        try {
-            List<SavedIngredient> savedIngredients = savedIngredientService.getSavedIngredientByUserId(userId);
-            if (savedIngredients == null) {
-                return ResponseEntity.noContent().build();
-            }
-            return ResponseEntity.ok(savedIngredients);
-        }catch (SavedIngredientServiceException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+        List<SavedIngredient> savedIngredients = savedIngredientService.getSavedIngredientByUserId(userId);
+        return ResponseEntity.ok(savedIngredients);
     }
 
     @PostMapping
-    public ResponseEntity<SavedIngredient> createSavedIngredient(@RequestBody SavedIngredient savedIngredient) {
-        try {
-            SavedIngredient createdSavedIngredient = savedIngredientService.addSavedIngredient(savedIngredient);
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdSavedIngredient);
-        }catch (SavedIngredientServiceException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    public ResponseEntity<SavedIngredient> createSavedIngredient(@Valid @RequestBody SavedIngredient savedIngredient) {
+        SavedIngredient createdSavedIngredient = savedIngredientService.addSavedIngredient(savedIngredient);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdSavedIngredient);
     }
 
 }

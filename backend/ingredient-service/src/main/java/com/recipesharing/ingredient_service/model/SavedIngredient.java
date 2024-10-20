@@ -1,5 +1,7 @@
 package com.recipesharing.ingredient_service.model;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,11 +15,17 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Valid
 public class SavedIngredient {
     @Id
     private ObjectId savedIngredientId;
 
+    @NotNull(message = "UserId required")
     private Long userId;
+
+    @NotNull(message = "RecipeId is required")
     private Long recipeId;
-    private List<String> ingredients;
+
+    @NotEmpty(message = "Ingredient list is required")
+    private List<@NotBlank(message = "Ingredients cannot be empty") String> ingredients;
 }

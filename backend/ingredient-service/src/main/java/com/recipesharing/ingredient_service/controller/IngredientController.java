@@ -2,10 +2,11 @@ package com.recipesharing.ingredient_service.controller;
 
 import com.recipesharing.ingredient_service.model.Ingredient;
 import com.recipesharing.ingredient_service.service.IngredientService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/ingredients")
@@ -20,12 +21,14 @@ public class IngredientController {
 
     @GetMapping("/recipe/{recipeId}")
     public ResponseEntity<Ingredient> getIngredientByRecipeId(@PathVariable Long recipeId) {
-        return ingredientService.getIngredientByRecipeId(recipeId);
+        Ingredient ingredients = ingredientService.getIngredientByRecipeId(recipeId);
+        return ResponseEntity.ok().body(ingredients);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<Ingredient> createIngredient(@RequestBody Ingredient ingredient) {
-        return ingredientService.createIngredient(ingredient);
+    @PostMapping
+    public ResponseEntity<Ingredient> createIngredient(@Valid @RequestBody Ingredient ingredient) {
+        Ingredient savedIngredient = ingredientService.createIngredient(ingredient);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedIngredient);
     }
 
 }

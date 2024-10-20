@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IngredientRepository extends MongoRepository<Ingredient, ObjectId> {
     Ingredient findByRecipeId(Long id);
+    Boolean existsByRecipeId(Long id);
 }
