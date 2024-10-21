@@ -4,6 +4,7 @@ import com.recipesharing.recipe_service.dto.CategoryDTO;
 import com.recipesharing.recipe_service.exception.AlreadyExistsException;
 import com.recipesharing.recipe_service.model.Category;
 import com.recipesharing.recipe_service.repository.CategoryRepository;
+import com.recipesharing.recipe_service.repository.RecipeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,12 @@ public class CategoryService {
 
     private final static Logger logger = LoggerFactory.getLogger(CategoryService.class.getName());
     private final CategoryRepository categoryRepository;
+    private final RecipeRepository recipeRepository;
 
     @Autowired
-    public CategoryService(CategoryRepository categoryRepository) {
+    public CategoryService(CategoryRepository categoryRepository, RecipeRepository recipeRepository) {
         this.categoryRepository = categoryRepository;
+        this.recipeRepository = recipeRepository;
     }
 
     //save a new category
@@ -46,11 +49,4 @@ public class CategoryService {
         }
         return categories;
     }
-
-    //Fetch category by categoryId
-    public Category getCategoryById(Long categoryId) {
-        return categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new NoSuchElementException("Category not found at id " + categoryId));
-    }
-
 }
