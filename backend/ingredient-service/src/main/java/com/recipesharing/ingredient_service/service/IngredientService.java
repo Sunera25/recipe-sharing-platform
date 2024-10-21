@@ -1,5 +1,6 @@
 package com.recipesharing.ingredient_service.service;
 
+import com.recipesharing.ingredient_service.dto.IngredientDTO;
 import com.recipesharing.ingredient_service.model.Ingredient;
 import com.recipesharing.ingredient_service.repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,18 @@ public class IngredientService {
     }
 
     //save ingredients of a recipe
-    public Ingredient createIngredient(Ingredient ingredient) {
-        if (ingredientRepository.existsByRecipeId(ingredient.getRecipeId())) {
-            logger.warning("Ingredient with id " + ingredient.getRecipeId() + " already exists");
-            throw new IllegalArgumentException("Ingredients for recipe id " + ingredient.getRecipeId() + " already exists");
+    public Ingredient createIngredient(IngredientDTO ingredientDTO) {
+        if (ingredientRepository.existsByRecipeId(ingredientDTO.getRecipeId())) {
+            logger.warning("Ingredient with id " + ingredientDTO.getRecipeId() + " already exists");
+            throw new IllegalArgumentException("Ingredients for recipe id " + ingredientDTO.getRecipeId() + " already exists");
         }
-        return ingredientRepository.save(ingredient);
+
+        Ingredient savedIngredient = Ingredient.builder()
+                .ingredients(ingredientDTO.getIngredients())
+                .recipeId(ingredientDTO.getRecipeId())
+                .build();
+
+        return ingredientRepository.save(savedIngredient);
     }
 
 }

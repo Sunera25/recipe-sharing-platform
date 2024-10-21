@@ -1,15 +1,18 @@
 package com.recipesharing.recipe_service.controller;
 
+import com.recipesharing.recipe_service.dto.CategoryDTO;
 import com.recipesharing.recipe_service.model.Category;
 import com.recipesharing.recipe_service.service.CategoryService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/recipe/category")
+@RequestMapping("/category")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -19,9 +22,21 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-
     @PostMapping
-    public Category addCategory(@RequestBody Category category) {
-        return categoryService.addCategory(category);
+    public ResponseEntity<Category> createCategory(@Valid @RequestBody CategoryDTO categoryDTO) {
+        Category savedCategory = categoryService.createCategory(categoryDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedCategory);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Category>> getAllCategories() {
+        List<Category> categories = categoryService.getAllCategories();
+        return ResponseEntity.ok(categories);
+    }
+
+    @GetMapping("/{categoryId}")
+    public ResponseEntity<Category> getCategoryById(@PathVariable Long categoryId) {
+        Category category = categoryService.getCategoryById(categoryId);
+        return ResponseEntity.ok(category);
     }
 }

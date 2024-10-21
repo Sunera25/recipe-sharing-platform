@@ -1,5 +1,6 @@
 package com.recipesharing.recipe_service.model;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,16 +12,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Category {
+public class Step {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long categoryId;
+    private Long stepId;
 
     @Column(nullable = false)
-    private String categoryName;
-
-    private String categoryImageUrl;
+    private String step;
 }
-
-

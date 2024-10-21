@@ -1,5 +1,6 @@
 package com.recipesharing.ingredient_service.controller;
 
+import com.recipesharing.ingredient_service.dto.SavedIngredientDTO;
 import com.recipesharing.ingredient_service.model.SavedIngredient;
 import com.recipesharing.ingredient_service.service.SavedIngredientService;
 import jakarta.validation.Valid;
@@ -29,8 +30,8 @@ public class SavedIngredientController {
     }
 
     @PostMapping
-    public ResponseEntity<SavedIngredient> createSavedIngredient(@Valid @RequestBody SavedIngredient savedIngredient) {
-        SavedIngredient createdSavedIngredient = savedIngredientService.addSavedIngredient(savedIngredient);
+    public ResponseEntity<SavedIngredient> createSavedIngredient(@Valid @RequestBody SavedIngredientDTO savedIngredientDTO) {
+        SavedIngredient createdSavedIngredient = savedIngredientService.addSavedIngredient(savedIngredientDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdSavedIngredient);
     }
 

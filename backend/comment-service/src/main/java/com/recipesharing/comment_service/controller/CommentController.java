@@ -1,5 +1,6 @@
 package com.recipesharing.comment_service.controller;
 
+import com.recipesharing.comment_service.dto.CommentDTO;
 import com.recipesharing.comment_service.model.Comment;
 import com.recipesharing.comment_service.service.CommentService;
 import jakarta.validation.Valid;
@@ -22,13 +23,13 @@ public class CommentController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Comment> addComment(@Valid @RequestBody Comment comment) {
-        Comment addedComment = commentService.addComment(comment);
+    public ResponseEntity<Comment> createComment(@Valid @RequestBody CommentDTO commentDTO) {
+        Comment addedComment = commentService.createComment(commentDTO);
         return ResponseEntity.ok(addedComment);
     }
 
     @GetMapping("/recipe/{recipeId}")
-    public ResponseEntity<List<Comment>> getCommentsForRecipe(@PathVariable Long recipeId){
+    public ResponseEntity<List<Comment>> getCommentsForRecipe(@PathVariable Long recipeId) {
         List<Comment> comments = commentService.getCommentsForRecipe(recipeId);
         return ResponseEntity.ok(comments);
     }
