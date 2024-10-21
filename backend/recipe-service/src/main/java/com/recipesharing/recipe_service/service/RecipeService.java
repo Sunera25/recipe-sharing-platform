@@ -63,4 +63,9 @@ public class RecipeService {
                 .build();
         return recipeRepository.save(savedRecipe);
     }
+
+    //search recipes for a keyword
+    public List<Recipe> searchRecipes(String keyword) {
+        return recipeRepository.searchRecipes(keyword);
+    }
 }

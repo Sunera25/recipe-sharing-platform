@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface CommentRepository extends MongoRepository<Comment, ObjectId> {
     List<Comment> findByRecipeId(Long id);
+
+    Long countByRecipeIdAndUserId(Long recipeId, Long userId);
 }

@@ -33,4 +33,14 @@ public class RecipeController {
         List<Recipe> recipeListByCategory = recipeService.getRecipesByCategoryId(categoryId);
         return ResponseEntity.ok().body(recipeListByCategory);
     }
+
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<List<Recipe>> searchRecipes(@PathVariable String keyword) {
+        List<Recipe> searchRecipes = recipeService.searchRecipes(keyword);
+        if (searchRecipes.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok().body(searchRecipes);
+    }
+
 }

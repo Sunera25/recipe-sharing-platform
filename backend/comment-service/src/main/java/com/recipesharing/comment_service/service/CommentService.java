@@ -1,6 +1,7 @@
 package com.recipesharing.comment_service.service;
 
 import com.recipesharing.comment_service.dto.CommentDTO;
+import com.recipesharing.comment_service.exception.MaximumCommentsException;
 import com.recipesharing.comment_service.model.Comment;
 import com.recipesharing.comment_service.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,11 +36,18 @@ public class CommentService {
 
     //save a comment for recipe
     public Comment createComment(CommentDTO commentDTO) {
+
+        //One user can maximum add 10 comments
+        if (commentRepository.countByRecipeIdAndUserId(commentDTO.getRecipeId(), commentDTO.getUserId()) > 10) {
+            throw new MaximumCommentsException("Allowed Comment count is 10");
+        }
+
         Comment newComment = Comment.builder()
                 .comment(commentDTO.getComment())
                 .name(commentDTO.getName())
                 .recipeId(commentDTO.getRecipeId())
                 .build();
+
         return commentRepository.save(newComment);
     }
 

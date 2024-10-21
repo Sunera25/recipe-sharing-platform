@@ -21,5 +21,6 @@ public class Comment {
 
     private Long recipeId;
     private String name;
+    private Long userId;
     private String comment;
 }

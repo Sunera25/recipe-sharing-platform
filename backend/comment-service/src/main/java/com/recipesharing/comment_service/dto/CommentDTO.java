@@ -18,6 +18,9 @@ public class CommentDTO {
     @NotNull(message = "RecipeId is required")
     private Long recipeId;
 
+    @NotNull(message = "User ID is Required")
+    private Long userId;
+
     @NotNull(message = "Name is Required")
     @NotBlank(message = "Name can't be a blank")
     private String name;
