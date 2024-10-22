@@ -32,6 +32,7 @@ public class SavedRecipeService {
     public SavedRecipe createSavedRecipe(SavedRecipeDTO savedRecipeDTO) {
         //make sure that recipe exists with recipe ID
         if (!recipeRepository.existsByRecipeId(savedRecipeDTO.getRecipeId())) {
+            logger.warn("Recipe with id {} does not exist", savedRecipeDTO.getRecipeId());
             throw new NoSuchElementException("Recipe with id " + savedRecipeDTO.getRecipeId() + " does not exist");
         }
         SavedRecipe savedRecipe = SavedRecipe.builder()
@@ -49,6 +50,7 @@ public class SavedRecipeService {
         List<SavedRecipesDTO> favouriteRecipesList = new ArrayList<>();
         List<SavedRecipe> favouriteRecipes = savedRecipeRepository.findByUserId(userId);
 
+        //make favourite recipes list
         for (SavedRecipe saveRecipe : favouriteRecipes) {
             Recipe recipe = recipeRepository.findById(saveRecipe.getRecipeId())
                     .orElseThrow(() -> new NoSuchElementException("Recipe Not Found at id" + saveRecipe.getRecipeId()));
