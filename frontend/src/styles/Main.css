@@ -1,19 +1,61 @@
-:root{
-
-
-    --main-color : #3B1E54;
-    --secondary-main-color : #4D2E6A;
-    --third-main-color : #D4BEE4 ;
-    --bg-color : #EEEEEE;
-
-    /* --main-color : #243642;
-    --secondary-main-color : #387478;
-    --third-main-color : #629584 ;
-    --bg-color : #E2F1E7; */
+:root {
+  --main-color: #1a1a1a;
+  --secondary-main-color: #3d3b3b;
+  --third-main-color: #666666;
+  --bg-color: #f2f2f2;
 }
 
-body{
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;   
+.blue-theme {
+  --main-color: #243642;
+  --secondary-main-color: #387478;
+  --third-main-color: #629584;
+  --bg-color: #e2f1e7;
+}
+
+.maroon-theme {
+  --main-color: #331d2c;
+  --secondary-main-color: #3f2e3e;
+  --third-main-color: #a78295;
+  --bg-color: #efe1d1;
+}
+
+.purple-theme {
+  --main-color: #3b1e54;
+  --secondary-main-color: #4d2e6a;
+  --third-main-color: #d4bee4;
+  --bg-color: #eeeeee;
+}
+
+.pink-theme {
+  --main-color: #921a40;
+  --secondary-main-color: #c75b7a;
+  --third-main-color: #d9abab;
+  --bg-color: #f4d9d0;
+}
+
+.maroon-theme {
+  --main-color: #561c24;
+  --secondary-main-color: #6d2932;
+  --third-main-color: #c7b7a3;
+  --bg-color: #e8d8c4;
+}
+
+.green-theme {
+  --main-color: #12372a;
+  --secondary-main-color: #436850;
+  --third-main-color: #adbc9f;
+  --bg-color: #fbfada;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Montserrat Regular";
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
 }

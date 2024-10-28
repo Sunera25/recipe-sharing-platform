@@ -10,7 +10,7 @@ function NotFound() {
 
   return (
     <div className="not-found-container">
-      <h1 className="not-found-topic">Oops !</h1>
+      <div className="not-found-text">Oops !</div>
       <div className="not-found-lottie">
         <Lottie
           options={{
@@ -20,10 +20,10 @@ function NotFound() {
           }}
         />
       </div>
-      <h1 className="not-found-topic">Page Not Found</h1>
-      <button className="go-home-btn" onClick={() => navigate("/")}>
-        GO HOME
-      </button>
+      <div className="not-found-text">Page Not Found</div>
+      <div className="go-home-btn">
+        <button onClick={() => navigate("/")}>GO HOME</button>
+      </div>
     </div>
   );
 }

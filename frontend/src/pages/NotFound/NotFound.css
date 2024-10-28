@@ -1,75 +1,87 @@
 .not-found-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bg-color); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
 }
 
-.not-found-topic{
-    font-weight: bold;
-    font-size: 3rem;
-    color: var(--main-color);
-    
+.not-found-text {
+  width: 100%;
+  font-family: "Adobe Garamond Pro Bold";
+  font-weight: bold;
+  font-size: 3rem;
+  color: var(--main-color);
+  text-align: center;
 }
 
 .not-found-lottie {
-    padding: 2.5rem 1rem;
-    width: 40vw;
-    height: 25vh;
-  }
-
-.go-home-btn {
-    background-color: var(--third-main-color); 
-    padding: 0.5rem 1.5rem;
-    border-radius: 1rem;
-    border: 0.1rem solid var(--secondary-main-color);
-    font-weight: bold;
-    font-size: 1.2rem;
-    transition: 0.3s ease-in-out;
+  padding: 2.5rem 1rem;
+  width: 40vw;
+  height: 30vh;
+  padding: 2.5rem 0;
 }
 
-.go-home-btn:hover {
-    background-color: var(--secondary-main-color); 
-    color: white;
-    transform: scale(1.05); 
-    font-size: 1.3rem;
+.go-home-btn {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3rem;
+}
+
+.go-home-btn button {
+  background-color: var(--third-main-color);
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+  border: 0.1rem solid var(--secondary-main-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: all 0.4s ease-in-out;
+}
+
+.go-home-btn button:hover {
+  background-color: var(--secondary-main-color);
+  color: white;
+  transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
+  .not-found-lottie {
+    width: 50vw;
+    height: 30vh;
+  }
+  .go-home-btn button {
+    font-size: 1rem;
+  }
 
-    .not-found-lottie {
-        width: 50vw;
-        height: 30vh;
-    }
-    .go-home-btn {
-        margin-top: 1rem;
-        font-size: 1rem;
-    }
-
-    .go-home-btn:hover {
-        font-size: 1.1rem;
-    }
+  .go-home-btn button:hover {
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 480px) {
+  .not-found-topic {
+    font-size: 2rem;
+  }
 
-    .not-found-topic{
-        font-size: 2rem;
-    }
+  .not-found-lottie {
+    width: 70vh;
+    height: 50vw;
+  }
 
-    .not-found-lottie {
-        width: 70vh;
-        height: 50vw;
-    }
+  .not-found-text {
+    font-size: 2rem;
+  }
 
-    .go-home-btn {
-        font-size: 0.9rem;
-    }
+  .go-home-btn button {
+    font-size: 0.9rem;
+  }
 
-    .go-home-btn:hover {
-        font-size: 1rem;
-    }
+  .go-home-btn button:hover {
+    font-size: 1rem;
+  }
 }
