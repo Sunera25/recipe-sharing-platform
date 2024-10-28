@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
   font-size: 1rem;
   padding: 1rem 0;
 }
@@ -145,6 +146,10 @@
   font-weight: bold;
 }
 
+.navbar-menu {
+  display: none;
+}
+
 @media (max-width: 1024px) {
   .nav-bar {
     gap: 1rem;
@@ -155,10 +160,36 @@
 }
 
 @media (max-width: 480px) {
+  .navbar-menu {
+    display: block;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 500;
+  }
+
   .navbar-container {
     justify-content: space-between;
+    padding: 1rem 1rem 1rem 2rem;
   }
   .nav-bar {
     display: none;
+    flex-direction: column;
+  }
+
+  .nav-bar.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+    color: white;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    gap: 1.5rem;
+    padding: 4rem 0 1rem 0;
+    z-index: 400;
   }
 }

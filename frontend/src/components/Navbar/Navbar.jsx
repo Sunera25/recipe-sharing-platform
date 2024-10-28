@@ -8,6 +8,7 @@ function Navbar() {
 
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { isLogin, setIsLogin } = useAuth();
 
@@ -17,6 +18,10 @@ function Navbar() {
 
   const toggleTheme = () => {
     setIsThemeOpen(!isThemeOpen);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const handleLogOut = () => {
@@ -37,7 +42,7 @@ function Navbar() {
       <a href="/" className="logo">
         <img src={require("../../assets/images/logo.png")} alt="logo" />
       </a>
-      <nav className="nav-bar">
+      <nav className={`nav-bar ${isMenuOpen ? "active" : ""}`}>
         <a href="/" className="nav-bar-topic">
           Home
         </a>
@@ -46,7 +51,7 @@ function Navbar() {
         </a>
         <div className="nav-bar-category">
           <button className="category-btn" onClick={toggleDropdown}>
-            Categories <i class="bx bx-category"></i>
+            Categories <i className="bx bx-category"></i>
           </button>
           {isCategoryOpen && (
             <ul className="dropdown">
@@ -58,7 +63,7 @@ function Navbar() {
         </div>
         <div className="navbar-theme">
           <button className="theme-btn" onClick={toggleTheme}>
-            Themes <i class="bx bx-brush-alt"></i>
+            Themes <i className="bx bx-brush-alt"></i>
           </button>
           {isThemeOpen && (
             <ul className="theme-dropdown">
@@ -86,6 +91,9 @@ function Navbar() {
           </>
         )}
       </nav>
+      <div className="navbar-menu" onClick={toggleMenu}>
+        <i className={isMenuOpen ? "bx bx-x" : "bx bx-menu"} id="menu-logo"></i>
+      </div>
     </div>
   );
 }
