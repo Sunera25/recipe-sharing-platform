@@ -41,14 +41,9 @@ function Navbar() {
     <div className="navbar-container">
       <a href="/" className="logo">
         <img src={require("../../assets/images/logo.png")} alt="logo" />
+        TasteHub
       </a>
       <nav className={`nav-bar ${isMenuOpen ? "active" : ""}`}>
-        <a href="/" className="nav-bar-topic">
-          Home
-        </a>
-        <a href="/about" className="nav-bar-topic">
-          About
-        </a>
         <div className="nav-bar-category">
           <button className="category-btn" onClick={toggleDropdown}>
             Categories <i className="bx bx-category"></i>
