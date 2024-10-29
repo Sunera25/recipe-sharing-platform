@@ -81,7 +81,7 @@ function Navbar() {
               className="register-btn"
               onClick={() => navigate("/register")}
             >
-              Sign Up
+              Register
             </button>
           </>
         )}
