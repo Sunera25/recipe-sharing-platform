@@ -23,7 +23,9 @@ function Login() {
     password: "",
   });
 
-  const toggleResetPW = () => {};
+  const toggleResetPW = () => {
+    return alert("Please contact the administrator to reset your password");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -92,13 +94,13 @@ function Login() {
               <p></p>
             )}
           </div>
+          <button className="reset-pw-btn" onClick={toggleResetPW}>
+            Forgot Password ?
+          </button>
           <button className="login-btn" type="submit">
             Login
           </button>
         </form>
-        <button className="reset-pw-btn" onClick={toggleResetPW}>
-          Forgot Password ?
-        </button>
         <p>
           Don't have an account ? <a href="/register"> Create Account</a>
         </p>

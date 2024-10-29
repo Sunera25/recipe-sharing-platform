@@ -1,0 +1,119 @@
+.register-container {
+  height: 100vh;
+  background-color: var(--bg-color);
+  background-image: url("../../assets/images/register.png");
+  background-repeat: no-repeat;
+  background-position: bottom right 5rem;
+  background-size: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0.25rem solid var(--main-color);
+  border-radius: 1rem;
+  background-color: var(--bg-color);
+  padding-bottom: 1.5rem;
+  transform: translateX(-30%);
+  box-shadow: 0 0 0.5rem 0.1rem var(--main-color);
+}
+
+.register-form-container h1 {
+  color: white;
+  margin-bottom: 1rem;
+  background-color: var(--main-color);
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  font-family: "Adobe Garamond Pro Bold";
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.register-form-raw {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 40vw;
+}
+
+.register-form-email,
+.register-form-input {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--main-color);
+  border: 0.1rem solid var(--main-color);
+  margin: 1.5rem 0 0.25rem 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+}
+
+.register-form-email i,
+.register-form-input i {
+  color: white;
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.register-form-input input {
+  width: 20vw;
+  height: 2rem;
+  outline: none;
+  padding-left: 1rem;
+  font-size: 0.9rem;
+}
+
+.register-form-email input {
+  width: 50vw;
+  height: 2rem;
+  outline: none;
+  padding-left: 1rem;
+  font-size: 0.9rem;
+}
+
+.register-form-checkbox {
+  justify-self: center;
+  align-self: flex-start;
+  margin: 0.5rem 0;
+}
+
+.register-form-button {
+  font-weight: bolder;
+  color: black;
+  background-color: var(--third-main-color);
+  border: 0.1rem solid var(--secondary-main-color);
+  border-radius: 1.25rem;
+  padding: 0.75rem 2rem;
+  margin: 1rem 0;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.register-form-button:hover {
+  background-color: var(--secondary-main-color);
+  color: white;
+  box-shadow: 0 0 0.5rem 0.1rem var(--secondary-main-color);
+  transition: all 0.4s ease-in-out;
+}
+
+.login-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin: 1rem 0 0 0;
+}
